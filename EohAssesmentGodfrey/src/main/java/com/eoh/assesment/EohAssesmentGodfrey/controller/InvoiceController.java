@@ -6,12 +6,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.eoh.assesment.EohAssesmentGodfrey.entities.Invoice;
+import com.eoh.assesment.EohAssesmentGodfrey.persistance.InvoiceService;
 
 @RestController
 public class InvoiceController {
 
-	@RequestMapping("/hello")
-	public List<Invoice> getInvoices(){
-		return null;
+	@RequestMapping("/invoices")
+	public List<Invoice> getAllInvoices(){
+		InvoiceService invoiceService = new InvoiceService();
+		
+		return invoiceService.getAllIncoices();
 	}
 }
