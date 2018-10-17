@@ -8,5 +8,6 @@ public class EohAssesmentGodfreyApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EohAssesmentGodfreyApplication.class, args);
+		
 	}
 }
