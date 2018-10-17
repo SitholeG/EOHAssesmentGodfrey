@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,18 +17,18 @@ public class InvoiceController {
 	InvoiceService invoiceService;
 	
 	@RequestMapping(value = "/invoice",  method = RequestMethod.POST)
-	public String addInvoice(@ModelAttribute InvoiceEntity invoiceEntity){
+	public String addInvoice(@RequestBody Invoice invoiceEntity){
 		invoiceService.addInvoice(invoiceEntity);
 		return "Done";
 	}
 	
 	@RequestMapping(value = "/invoices",  method = RequestMethod.GET)
-	public List<InvoiceEntity> getAllInvoices(){
+	public List<Invoice> getAllInvoices(){
 		return invoiceService.getAllInvoices();
 	}
 	
-	@RequestMapping(value = "/Invoice/{id}",  method = RequestMethod.GET)
-	public Optional<InvoiceEntity> getInvoice(@PathVariable(value = "id") Long id){
+	@RequestMapping(value = "/invoice/{id}",  method = RequestMethod.GET)
+	public Optional<Invoice> getInvoice(@PathVariable(value = "id") Long id){
 		return invoiceService.getInvoiceById(id);
 	}
 }
